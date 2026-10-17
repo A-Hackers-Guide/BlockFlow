@@ -1,0 +1,1076 @@
+{
+  "App": "BlockFlow",
+  "Version": 1,
+  "Name": "Goldberg Ripper",
+  "ShowDoneMessage": true,
+  "CopyFolder": "C:\\Users\\Leland Kirk\\Downloads\\Goldburg Ripper\\copy",
+  "Blocks": [
+    {
+      "Type": "CopyToCopyFolder",
+      "Disabled": false,
+      "Values": {
+        "source": "FileCopy.FC",
+        "mode": "Use the copy folder (ask me the first time)",
+        "newName": "",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskFolder",
+      "Disabled": false,
+      "Values": {
+        "var": "game",
+        "prompt": "Pick the game you would like to RIP:",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "drm",
+        "prompt": "Does your game still have other non-steamworks DRM?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "drm",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "StopFlow",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "CopyFile",
+      "Disabled": false,
+      "Values": {
+        "source": "{copyfolder}\\steam_api(64).dll",
+        "dest": "{game}",
+        "newName": "",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "CopyFile",
+      "Disabled": false,
+      "Values": {
+        "source": "{copyfolder}\\steam_api.dll",
+        "dest": "{game}",
+        "newName": "",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "CreateFolder",
+      "Disabled": false,
+      "Values": {
+        "path": "{game}\\steam_settings",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "app",
+        "prompt": "What this game\u0027s AppID?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "steam_appid.txt",
+        "content": "{app}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "steam_appid.txt",
+        "content": "{app}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "id",
+        "prompt": "What is your Steam ID?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "user_steam_id.txt",
+        "content": "{id}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "name",
+        "prompt": "What is your Steam Account Name?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "account_name.txt",
+        "content": "{name}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "port",
+        "prompt": "What is your Custom Listen Port?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "listen_port.txt",
+        "content": "{port}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "lang",
+        "prompt": "What is your Custom Language?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "language.txt",
+        "content": "{lang}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "age",
+        "prompt": "Is your game older than 2016?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "age",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "interfaces",
+        "prompt": "What is your game\u0027s interfaces (Look it up, very important)?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "steam_interfaces.txt",
+        "content": "{interfaces}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "force",
+        "prompt": "Do you want to force other global settings?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "force",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "idf",
+        "prompt": "What is your FORCE Steam ID?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "force_steam_id.txt",
+        "content": "{idf}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "namef",
+        "prompt": "What is your FORCE Steam Account Name?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "force_account_name.txt",
+        "content": "{namef}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "portf",
+        "prompt": "What is your FORCE Custom Listen Port?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "force_listen_port.txt",
+        "content": "{portf}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "langf",
+        "prompt": "What is your FORCE Custom Language?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "force_language.txt",
+        "content": "{langf}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "save",
+        "prompt": "Would you like to save game data in game dir?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "save",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "savepath",
+        "prompt": "What is your Custom Save Dir?",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "local_save.txt",
+        "content": "{savepath}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "dlc",
+        "prompt": "Does your game use the BIsDlcInstalled function (look it up)?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "dlc",
+        "op": "is No",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "1234dlc",
+        "prompt": "List all of your DLCs in 1234=NAME format 1 per line.",
+        "default": "",
+        "multi": "true",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "DLC.txt",
+        "content": "{1234dlc}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "depots",
+        "prompt": "Does your game use DLC Depots?",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "depots",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "depotlist",
+        "prompt": "List all installed game depots:",
+        "default": "",
+        "multi": "true",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "depots.txt",
+        "content": "{depotlist}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "subscriptions",
+        "prompt": "Does your game check if you are subscribed?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "subscriptions",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "subscription",
+        "prompt": "List subscribed groups:",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "subscribed_groups.txt",
+        "content": "{subscription}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "paths",
+        "prompt": "Does your game check DLC app paths?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "paths",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "pathlist",
+        "prompt": "List all app paths in 1234=./steam_api format 1 per line:",
+        "default": "",
+        "multi": "true",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "app_paths.txt",
+        "content": "{pathlist}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "CreateFolder",
+      "Disabled": false,
+      "Values": {
+        "path": "{game}\\steam_settings\\mods",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "Message",
+      "Disabled": false,
+      "Values": {
+        "text": "Put your mods in GAMEFOLDER\\steam_settings\\mods or not if you don\u0027t want to, but you must do your own research on that.",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "offline",
+        "prompt": "Does your game connect to servers that only work with Steam Offline Mode?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "offline",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "offline.txt",
+        "content": "Rename this to: offline.txt to pretend steam is running in offline mode. Rename this to: online.txt to pretend steam is running in online mode.",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "disablenet",
+        "prompt": "Do you want to Disable Game Networking? This will REMOVE all online functions!!!",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "disablenet",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "disable_networking.txt",
+        "content": "Rename this to: disable_networking.txt to disable all networking functionality. Rename this to: enable_networking.txt to disable all networking functionality.",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "CBIPS",
+        "prompt": "Do you want to Broadcast Custom IPS?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "CBIPS",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "CBIPSlist",
+        "prompt": "List all Custom IPS or Domains one per line:",
+        "default": "",
+        "multi": "true",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings\\",
+        "name": "custom_broadcasts.txt",
+        "content": "{CBIPSlist}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "Message",
+      "Disabled": false,
+      "Values": {
+        "text": "Be careful with items and achievements, for they could crash your game!",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "items",
+        "prompt": "What are all items you would like in your inventory in JSON?",
+        "default": "",
+        "multi": "true",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "items.json",
+        "content": "{items}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "achievements",
+        "prompt": "What are all achievements you would like in JSON?",
+        "default": "",
+        "multi": "true",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "achievements.json",
+        "content": "{achievements}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "Message",
+      "Disabled": false,
+      "Values": {
+        "text": "You can use the scripts\\stats_schema_achievement_gen\\achievements_gen.py script in the emu source code repo to generate a achievements and stats (later) config from a steam: appcache\\stats\\UserGameStatsSchema_{app}.bin file.",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "leade",
+        "prompt": "Does your game\u0027s leaderboard break with standard formatting?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "leade",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "Message",
+      "Disabled": false,
+      "Values": {
+        "text": "By default the emulator assumes all leaderboards queried by the game (FindLeaderboard()) exist and creates them with the most common options (sort method descending, display type numeric) In some games this default behavior doesn\u0027t work and so you may need to tweak which leaderboards the game sees. An empty leaderboards.txt makes the emu behave as if any leaderboard queried by the game using FindLeaderboard does not exist.",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "leadformat",
+        "prompt": "What is the proper formatting for it in LEADERBOARD_NAME=sort method=display type format? For the sort methods: 0 = none, 1 = ascending, 2 = descending, For the display type: 0 = none, 1 = numeric, 2 = time seconds, 3 = milliseconds",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "leaderboards.txt",
+        "content": "{leadformat}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "DefValRed",
+        "prompt": "Does your game expect a Default Value to be read to it the First Time it reads a stat?",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "DefValRed",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "DefRedVal",
+        "prompt": "List Default Value in STAT_NAME=type=default value format. The type can be: int, float or avgrate, the default value is simply a number that represents the default value for the stat.",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "stats.txt",
+        "content": "{DefRedVal}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "Message",
+      "Disabled": false,
+      "Values": {
+        "text": "You can use the scripts\\stats_schema_achievement_gen\\achievements_gen.py script in the emu source code repo to generate a achievements and stats (later) config from a steam: appcache\\stats\\UserGameStatsSchema_{app}.bin file.",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "Message",
+      "Disabled": false,
+      "Values": {
+        "text": "We only support one SteamHTTP link, and up to 3 sections (ex. Https://example.com/admin/en), rerun the program to add more, and we only support folder generation.",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskYesNo",
+      "Disabled": false,
+      "Values": {
+        "var": "http",
+        "prompt": "Would you like to add SteamHTTP?",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "If",
+      "Disabled": false,
+      "Values": {
+        "var": "http",
+        "op": "is Yes",
+        "value": ""
+      }
+    },
+    {
+      "Type": "CreateFolder",
+      "Disabled": false,
+      "Values": {
+        "path": "{game}\\steam_settings\\http",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "urlb",
+        "prompt": "What Top URL would you like to add in exabple.com or en.example.com format, or more. Make sure not to list https or http, or any url /link links (ex. example.com/example)",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "false",
+        "allowSkip": "false",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "CreateFolder",
+      "Disabled": false,
+      "Values": {
+        "path": "{game}\\steam_settings\\http\\{urlb}",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "urls",
+        "prompt": "What secondary (optional) slash url would you like? (ex. exabple.com/admin would be just admin)",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "CreateFolder",
+      "Disabled": false,
+      "Values": {
+        "path": "{game}\\steam_settings\\http\\{urlb}\\{urls}",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "urlt",
+        "prompt": "What third (optional) slash url would you like? (ex. exabple.com/admin/en would be just en)",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "CreateFolder",
+      "Disabled": false,
+      "Values": {
+        "path": "{game}\\steam_settings\\http\\{urlb}\\{urls}\\{urlt}",
+        "skipIfSkipped": "true"
+      }
+    },
+    {
+      "Type": "EndIf",
+      "Disabled": false,
+      "Values": {}
+    },
+    {
+      "Type": "AskText",
+      "Disabled": false,
+      "Values": {
+        "var": "build",
+        "prompt": "What is the game\u0027s Build ID? Steam -\u003E Library -\u003E GAME -\u003E Settings -\u003E Properties -\u003E Updates -\u003E Build ID",
+        "default": "",
+        "multi": "false",
+        "emptySkip": "true",
+        "allowSkip": "true",
+        "onSkip": "Just mark it as skipped"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}",
+        "name": "build_id.txt",
+        "content": "{build}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    },
+    {
+      "Type": "WriteText",
+      "Disabled": false,
+      "Values": {
+        "folder": "{game}\\steam_settings",
+        "name": "build_id.txt",
+        "content": "{build}",
+        "ifExists": "Replace it (always overwrite)",
+        "skipIfSkipped": "false"
+      }
+    }
+  ]
+}

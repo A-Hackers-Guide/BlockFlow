@@ -1,0 +1,2 @@
+C:\Users\Leland Kirk\BlockFlow\dist\BlockFlow.pdb
+C:\Users\Leland Kirk\BlockFlow\dist\BlockFlow.exe
